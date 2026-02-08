@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест загрузки</title>
+    <style>
+        body {
+            font-family: monospace;
+            background: #0a0a0a;
+            color: #00ff88;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .test {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid #222;
+            background: #111;
+        }
+        .success { color: #00ff88; }
+        .error { color: #ff0088; }
+        .warning { color: #ffaa00; }
+        button {
+            background: #00ff88;
+            color: #0a0a0a;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Диагностика сайта</h1>
+    
+    <div class="test">
+        <h3>1. Проверка загрузки HTML</h3>
+        <p class="success">✅ HTML загружен успешно</p>
+    </div>
+    
+    <div class="test">
+        <h3>2. Проверка JavaScript</h3>
+        <p id="js-test" class="error">❌ JavaScript не загружен</p>
+    </div>
+    
+    <div class="test">
+        <h3>3. Проверка localStorage</h3>
+        <p id="storage-test"></p>
+    </div>
+    
+    <div class="test">
+        <h3>4. Проверка API погоды</h3>
+        <button onclick="testWeather()">Проверить погоду</button>
+        <p id="weather-test"></p>
+    </div>
+    
+    <div class="test">
+        <h3>5. Проверка Canvas</h3>
+        <p id="canvas-test"></p>
+        <canvas id="testCanvas" width="100" height="100" style="border: 1px solid #00ff88;"></canvas>
+    </div>
+    
+    <div class="test">
+        <h3>6. Информация о браузере</h3>
+        <p id="browser-info"></p>
+    </div>
+    
+    <div class="test">
+        <h3>7. Проверка файлов</h3>
+        <button onclick="testFiles()">Проверить файлы</button>
+        <div id="files-test"></div>
+    </div>
+
+    <script>
+        // Test 2: JavaScript
+        document.getElementById('js-test').innerHTML = '<span class="success">✅ JavaScript работает</span>';
+        
+        // Test 3: localStorage
+        try {
+            localStorage.setItem('test', 'ok');
+            const test = localStorage.getItem('test');
+            localStorage.removeItem('test');
+            document.getElementById('storage-test').innerHTML = test === 'ok' 
+                ? '<span class="success">✅ localStorage работает</span>'
+                : '<span class="error">❌ localStorage не работает</span>';
+        } catch (e) {
+            document.getElementById('storage-test').innerHTML = '<span class="error">❌ localStorage заблокирован: ' + e.message + '</span>';
+        }
+        
+        // Test 4: Weather API
+        async function testWeather() {
+            const el = document.getElementById('weather-test');
+            el.innerHTML = '<span class="warning">⏳ Проверка...</span>';
+            
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000);
+                
+                const response = await fetch(
+                    'https://api.open-meteo.com/v1/forecast?latitude=55.0084&longitude=82.9357&current=temperature_2m&timezone=Asia%2FNovosibirsk',
+                    { signal: controller.signal }
+                );
+                
+                clearTimeout(timeoutId);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    el.innerHTML = `<span class="success">✅ API работает! Температура: ${Math.round(data.current.temperature_2m)}°C</span>`;
+                } else {
+                    el.innerHTML = `<span class="error">❌ API вернул ошибку: ${response.status}</span>`;
+                }
+            } catch (error) {
+                el.innerHTML = `<span class="error">❌ Ошибка: ${error.message}</span>`;
+            }
+        }
+        
+        // Test 5: Canvas
+        try {
+            const canvas = document.getElementById('testCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#00ff88';
+            ctx.fillRect(10, 10, 80, 80);
+            document.getElementById('canvas-test').innerHTML = '<span class="success">✅ Canvas работает</span>';
+        } catch (e) {
+            document.getElementById('canvas-test').innerHTML = '<span class="error">❌ Canvas не работает: ' + e.message + '</span>';
+        }
+        
+        // Test 6: Browser info
+        document.getElementById('browser-info').innerHTML = `
+            <span class="success">
+                User Agent: ${navigator.userAgent}<br>
+                Язык: ${navigator.language}<br>
+                Онлайн: ${navigator.onLine ? 'Да' : 'Нет'}<br>
+                Cookies: ${navigator.cookieEnabled ? 'Включены' : 'Отключены'}
+            </span>
+        `;
+        
+        // Test 7: Files
+        async function testFiles() {
+            const el = document.getElementById('files-test');
+            el.innerHTML = '<span class="warning">⏳ Проверка файлов...</span>';
+            
+            const files = [
+                'style.css',
+                'script.js',
+                'i18n.js',
+                'index.html'
+            ];
+            
+            let results = '';
+            
+            for (const file of files) {
+                try {
+                    const response = await fetch(file, { method: 'HEAD' });
+                    if (response.ok) {
+                        results += `<span class="success">✅ ${file}</span><br>`;
+                    } else {
+                        results += `<span class="error">❌ ${file} (${response.status})</span><br>`;
+                    }
+                } catch (error) {
+                    results += `<span class="error">❌ ${file} (${error.message})</span><br>`;
+                }
+            }
+            
+            el.innerHTML = results;
+        }
+        
+        console.log('🔍 Тестовая страница загружена');
+        console.log('Откройте консоль браузера (F12) для дополнительной информации');
+    </script>
+</body>
+</html>

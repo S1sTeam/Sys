@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="HandheldFriendly" content="true">
+    <title>Руслан — Разработчик</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Particles Background -->
+    <canvas id="particles"></canvas>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+            <span class="logo-bracket">&lt;</span>
+            Сусик
+            <span class="logo-bracket">/&gt;</span>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="#home" data-i18n="nav.home">Главная</a>
+            <a href="#about" data-i18n="nav.about">О себе</a>
+            <a href="#work" data-i18n="nav.skills">Навыки</a>
+            <a href="#projects" data-i18n="nav.projects">Проекты</a>
+            <a href="#contact" data-i18n="nav.contact">Контакты</a>
+        </div>
+        <div class="nav-controls">
+            <div class="language-selector">
+                <button class="lang-btn" id="langBtn" aria-label="Выбрать язык">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <span id="currentLang">RU</span>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button data-lang="ru"><span class="flag">🇷🇺</span> Русский</button>
+                    <button data-lang="en"><span class="flag">🇬🇧</span> English</button>
+                    <button data-lang="es"><span class="flag">🇪🇸</span> Español</button>
+                    <button data-lang="de"><span class="flag">🇩🇪</span> Deutsch</button>
+                    <button data-lang="fr"><span class="flag">🇫🇷</span> Français</button>
+                    <button data-lang="it"><span class="flag">🇮🇹</span> Italiano</button>
+                    <button data-lang="pt"><span class="flag">🇵🇹</span> Português</button>
+                    <button data-lang="zh"><span class="flag">🇨🇳</span> 中文</button>
+                    <button data-lang="ja"><span class="flag">🇯🇵</span> 日本語</button>
+                    <button data-lang="ko"><span class="flag">🇰🇷</span> 한국어</button>
+                </div>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-label">
+                    <span class="typing-cursor">▮</span> <span data-i18n="hero.greeting">Привет, я</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Руслан</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <span class="rotating-text">
+                        <span class="text-item active">aka Сусик</span>
+                        <span class="text-item">aka Сус</span>
+                        <span class="text-item" data-i18n="hero.role">Разработчик</span>
+                    </span>
+                </div>
+                <p class="hero-description">
+                    <span class="highlight">15 <span data-i18n="hero.years">лет</span></span> • 
+                    <span class="highlight" data-i18n="hero.developer">Разработчик</span> • 
+                    <span class="highlight" data-i18n="hero.creator">Создатель кода</span>
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn-primary">
+                        <span data-i18n="hero.contact">Связаться</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#work" class="btn-secondary">
+                        <span data-i18n="hero.skills">Мои навыки</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <div class="stat-value" data-target="10">0</div>
+                        <div class="stat-text" data-i18n="hero.projects">Проектов</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" data-target="200">0</div>
+                        <div class="stat-text" data-i18n="hero.hours">Часов кода</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">∞</div>
+                        <div class="stat-text" data-i18n="hero.ideas">Идей</div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="section-content">
+                <div class="section-label">
+                    <span class="label-number">01.</span> <span data-i18n="about.label">О себе</span>
+                </div>
+                <h2 class="section-title" data-i18n="about.title">Кто я такой</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p data-i18n="about.text1">Привет! Я <span class="highlight">Руслан</span>, но друзья зовут меня <span class="highlight">Сусиком</span> или просто <span class="highlight">Сус</span>. Мне 15 лет, и я увлечен программированием.</p>
+                        <p data-i18n="about.text2">Пишу код, создаю проекты и постоянно учусь чему-то новому. Каждая строка кода — это шаг к чему-то большему.</p>
+                        <p data-i18n="about.text3">Люблю экспериментировать с новыми технологиями и создавать что-то уникальное. Мой подход — это сочетание креативности и технических навыков.</p>
+                        <p data-i18n="about.text4">Я основатель компании <span class="highlight">StarCO</span> — мы создаем инновационные решения для игрового сообщества и веб-разработки.</p>
+                        <p data-i18n="about.text5">Для разработки использую <span class="highlight">Kiro IDE</span> — современную среду разработки с AI-ассистентом, которая помогает писать код быстрее и эффективнее.</p>
+                        <div class="about-badges">
+                            <span class="badge">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                                <span data-i18n="about.badge1">Веб-разработка</span>
+                            </span>
+                            <span class="badge">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                    <path d="M2 2l7.586 7.586"></path>
+                                    <circle cx="11" cy="11" r="2"></circle>
+                                </svg>
+                                <span>UI/UX</span>
+                            </span>
+                            <span class="badge">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                </svg>
+                                <span data-i18n="about.badge2">Быстрое обучение</span>
+                            </span>
+                            <span class="badge">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                </svg>
+                                <span data-i18n="about.badge4">Kiro IDE</span>
+                            </span>
+                            <span class="badge">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                </svg>
+                                <span data-i18n="about.badge3">Инновации</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label" data-i18n="about.stat1">Лет</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">∞</div>
+                            <div class="stat-label" data-i18n="about.stat2">Идей</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label" data-i18n="about.stat3">Код</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="company" class="company">
+            <div class="section-content">
+                <div class="section-label">
+                    <span class="label-number">02.</span> <span data-i18n="company.label">Компания</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="gradient-text">StarCO</span>
+                </h2>
+                <p class="company-description" data-i18n="company.description">
+                    Моя компания, где мы создаем инновационные проекты для игрового сообщества и веб-разработки
+                </p>
+                
+                <div class="company-projects">
+                    <div class="company-project">
+                        <div class="company-project-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                            </svg>
+                        </div>
+                        <h3>StarWorld</h3>
+                        <p data-i18n="company.starworld">Игровой мир с уникальными возможностями и сообществом</p>
+                    </div>
+                    
+                    <div class="company-project">
+                        <div class="company-project-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="8" width="18" height="12" rx="2"></rect>
+                                <path d="M10 8V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v3"></path>
+                                <circle cx="8" cy="14" r="1"></circle>
+                                <circle cx="16" cy="14" r="1"></circle>
+                                <path d="M8 17h8"></path>
+                            </svg>
+                        </div>
+                        <h3>StarGames</h3>
+                        <p data-i18n="company.stargames">Коллекция увлекательных игр и развлечений для всех</p>
+                    </div>
+                    
+                    <div class="company-project featured-project">
+                        <div class="company-project-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <h3>StarHost</h3>
+                        <p data-i18n="company.starhost">Профессиональный хостинг серверов для игр и приложений</p>
+                        <a href="https://starhost.xo.je/?i=1" target="_blank" rel="noopener noreferrer" class="company-link">
+                            <span data-i18n="company.visit">Посетить</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="company-cta">
+                    <div class="company-cta-content">
+                        <h3 data-i18n="company.join">Присоединяйся к нашему сообществу</h3>
+                        <p data-i18n="company.joinText">Следи за новостями и обновлениями в нашем Telegram канале</p>
+                    </div>
+                    <a href="https://t.me/mystarhost" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                        <span data-i18n="company.telegram">Telegram канал</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="team">
+            <div class="section-content">
+                <div class="section-label">
+                    <span class="label-number">03.</span> <span data-i18n="team.label">Команда</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="gradient-text">Gorizont Teams</span>
+                </h2>
+                <p class="team-description" data-i18n="team.description">
+                    Наш игровой клан, где собрались лучшие игроки и друзья
+                </p>
+                
+                <div class="team-grid">
+                    <div class="team-member owner">
+                        <div class="member-badge" data-i18n="team.owner">Овнер</div>
+                        <div class="member-avatar">
+                            <img src="avatars/Sys.jpg" alt="SYS #Сусик">
+                        </div>
+                        <h3>SYS #Сусик</h3>
+                        <p class="member-role" data-i18n="team.owner2">Овнер 2</p>
+                        <p class="member-description" data-i18n="team.sys">Основатель и разработчик</p>
+                    </div>
+                    
+                    <div class="team-member owner">
+                        <div class="member-badge" data-i18n="team.owner">Овнер</div>
+                        <div class="member-avatar">
+                            <img src="avatars/HeatTreak.jpg" alt="Heat Treak">
+                        </div>
+                        <h3>Heat Treak</h3>
+                        <p class="member-role" data-i18n="team.owner1">Овнер 1</p>
+                        <p class="member-description" data-i18n="team.sent">Главный овнер клана</p>
+                    </div>
+                    
+                    <div class="team-member owner">
+                        <div class="member-badge" data-i18n="team.owner">Овнер</div>
+                        <div class="member-avatar">
+                            <img src="avatars/Linka.jpg" alt="Линка">
+                        </div>
+                        <h3>Линка</h3>
+                        <p class="member-role" data-i18n="team.owner3">Овнер 3</p>
+                        <p class="member-description" data-i18n="team.linka">Совладелец клана</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-badge" data-i18n="team.member">Участник</div>
+                        <div class="member-avatar">
+                            <img src="avatars/Devide.jpg" alt="Devide">
+                        </div>
+                        <h3>Devide (PoRoRo777)</h3>
+                        <p class="member-role">PoRoRo777</p>
+                        <p class="member-description" data-i18n="team.devide">Активный участник команды</p>
+                    </div>
+                    
+                    <div class="team-member admin">
+                        <div class="member-badge" data-i18n="team.deputyOwner">Зам.Овнер</div>
+                        <div class="member-avatar">
+                            <img src="avatars/MatveyKo.jpg" alt="Матвей&ко">
+                        </div>
+                        <h3>Матвей&ко</h3>
+                        <p class="member-role" data-i18n="team.deputyOwner">Зам.Овнер</p>
+                        <p class="member-description" data-i18n="team.matvey">Заместитель владельца</p>
+                    </div>
+                    
+                    <div class="team-member admin">
+                        <div class="member-badge" data-i18n="team.seniorAdmin">Ст.Админ</div>
+                        <div class="member-avatar">
+                            <img src="avatars/RazorPlayer.jpg" alt="RazorPlayer">
+                        </div>
+                        <h3>RazorPlayer</h3>
+                        <p class="member-role" data-i18n="team.seniorAdmin">Ст.Админ</p>
+                        <p class="member-description" data-i18n="team.razor">Старший администратор</p>
+                    </div>
+                    
+                    <div class="team-member legend">
+                        <div class="member-badge" data-i18n="team.legend">Legenda</div>
+                        <div class="member-avatar">
+                            <img src="avatars/WalterWhite.jpg" alt="Walter White">
+                        </div>
+                        <h3>Walter White</h3>
+                        <p class="member-role" data-i18n="team.legend">Legenda</p>
+                        <p class="member-description" data-i18n="team.walter">Легендарный участник</p>
+                    </div>
+                </div>
+                
+                <div class="team-stats">
+                    <div class="team-stat-item">
+                        <div class="team-stat-number">7+</div>
+                        <div class="team-stat-label" data-i18n="team.members">Участников</div>
+                    </div>
+                    <div class="team-stat-item">
+                        <div class="team-stat-number">∞</div>
+                        <div class="team-stat-label" data-i18n="team.victories">Побед</div>
+                    </div>
+                    <div class="team-stat-item">
+                        <div class="team-stat-number">24/7</div>
+                        <div class="team-stat-label" data-i18n="team.active">Активность</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="work">
+            <div class="section-content">
+                <div class="section-label">
+                    <span class="label-number">04.</span> <span data-i18n="skills.label">Навыки</span>
+                </div>
+                <h2 class="section-title" data-i18n="skills.title">Что я умею</h2>
+                
+                <div class="skills-tabs">
+                    <button class="tab-btn active" data-tab="technical">
+                        <span data-i18n="skills.technical">Технические</span>
+                    </button>
+                    <button class="tab-btn" data-tab="soft">
+                        <span data-i18n="skills.soft">Личные</span>
+                    </button>
+                    <button class="tab-btn" data-tab="tools">
+                        <span data-i18n="skills.tools">Инструменты</span>
+                    </button>
+                </div>
+
+                <div class="tab-content active" data-content="technical">
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-number">01</div>
+                            <h3>HTML & CSS</h3>
+                            <p data-i18n="skills.html">Семантическая верстка, Flexbox, Grid, анимации</p>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-number">02</div>
+                            <h3>JavaScript</h3>
+                            <p data-i18n="skills.js">ES6+, DOM манипуляции, асинхронность</p>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                            <span class="skill-percent">75%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-number">03</div>
+                            <h3 data-i18n="skills.responsive">Адаптивный дизайн</h3>
+                            <p data-i18n="skills.responsiveDesc">Mobile-first подход, кроссбраузерность</p>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-number">04</div>
+                            <h3>UI/UX <span data-i18n="skills.design">дизайн</span></h3>
+                            <p data-i18n="skills.designDesc">Прототипирование, пользовательский опыт</p>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="70"></div>
+                            </div>
+                            <span class="skill-percent">70%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" data-content="soft">
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                </svg>
+                            </div>
+                            <div class="skill-number">01</div>
+                            <h3 data-i18n="skills.learning">Быстрое обучение</h3>
+                            <p data-i18n="skills.learningDesc">Легко осваиваю новые технологии и фреймворки</p>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M12 1v6m0 6v6"></path>
+                                    <path d="M17 7l-5 5-5-5"></path>
+                                </svg>
+                            </div>
+                            <div class="skill-number">02</div>
+                            <h3 data-i18n="skills.creativity">Креативность</h3>
+                            <p data-i18n="skills.creativityDesc">Нестандартный подход к решению задач</p>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 16v-4"></path>
+                                    <path d="M12 8h.01"></path>
+                                </svg>
+                            </div>
+                            <div class="skill-number">03</div>
+                            <h3 data-i18n="skills.attention">Внимание к деталям</h3>
+                            <p data-i18n="skills.attentionDesc">Забочусь о качестве и чистоте кода</p>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="skill-number">04</div>
+                            <h3 data-i18n="skills.motivation">Самомотивация</h3>
+                            <p data-i18n="skills.motivationDesc">Постоянно развиваюсь и учусь новому</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" data-content="tools">
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                    <path d="M9 3v18"></path>
+                                    <path d="M14 8l3 3-3 3"></path>
+                                </svg>
+                            </div>
+                            <span>Kiro IDE</span>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </div>
+                            <span>VS Code</span>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M12 1v6m0 6v6"></path>
+                                    <path d="M17 7l-5 5-5-5"></path>
+                                </svg>
+                            </div>
+                            <span>Git</span>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                    <path d="M2 2l7.586 7.586"></path>
+                                    <circle cx="11" cy="11" r="2"></circle>
+                                </svg>
+                            </div>
+                            <span>Figma</span>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </div>
+                            <span>Chrome DevTools</span>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
+                            <span>npm</span>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>
+                            </div>
+                            <span>Photoshop</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="section-content">
+                <div class="section-label">
+                    <span class="label-number">05.</span> <span data-i18n="projects.label">Проекты</span>
+                </div>
+                <h2 class="section-title" data-i18n="projects.title">Мои работы</h2>
+                <div class="projects-grid">
+                    <div class="project-card featured">
+                        <div class="project-number">01</div>
+                        <div class="project-image project-hosting">
+                            <div class="project-tech-stack">
+                                <span>Hosting</span>
+                                <span>Management</span>
+                                <span>Servers</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3>StarHost</h3>
+                                <div class="project-links">
+                                    <a href="https://starhost.xo.je/?i=1" target="_blank" rel="noopener noreferrer" class="project-icon-link" data-i18n-title="projects.visit" title="Посетить сайт">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="project-description" data-i18n="projects.starhost.desc">Профессиональный хостинг серверов для игр и приложений. Удобная панель управления, высокая производительность и надежность. Поддержка различных игровых серверов и веб-приложений.</p>
+                            <div class="project-features">
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span data-i18n="projects.starhost.feature1">Панель управления</span>
+                                </div>
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span data-i18n="projects.starhost.feature2">Высокая производительность</span>
+                                </div>
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span data-i18n="projects.starhost.feature3">24/7 Поддержка</span>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <span data-i18n="projects.tags.hosting">Hosting</span>
+                                <span data-i18n="projects.tags.servers">Servers</span>
+                                <span data-i18n="projects.tags.management">Management</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-number">02</div>
+                        <div class="project-image project-veloauth">
+                            <div class="project-tech-stack">
+                                <span>Minecraft</span>
+                                <span>Velocity</span>
+                                <span>Auth</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3>VeloAuth System</h3>
+                                <div class="project-links">
+                                    <a href="https://modrinth.com/plugin/veloauth-system" target="_blank" rel="noopener noreferrer" class="project-icon-link" data-i18n-title="projects.visit" title="Modrinth">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="project-description" data-i18n="projects.veloauth.desc">Мощный плагин авторизации для Minecraft серверов на платформе Velocity. Обеспечивает безопасность игроков с современными методами шифрования и защиты данных.</p>
+                            <div class="project-features">
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span data-i18n="projects.veloauth.feature1">Безопасная авторизация</span>
+                                </div>
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span data-i18n="projects.veloauth.feature2">Шифрование данных</span>
+                                </div>
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span data-i18n="projects.veloauth.feature3">Настраиваемый</span>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <span>Minecraft</span>
+                                <span data-i18n="projects.tags.plugin">Plugin</span>
+                                <span data-i18n="projects.tags.auth">Auth</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-number">03</div>
+                        <div class="project-image project-api">
+                            <div class="project-tech-stack">
+                                <span>API</span>
+                                <span>Integration</span>
+                                <span>Java</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3>VeloAuth API</h3>
+                                <div class="project-links">
+                                    <a href="https://modrinth.com/plugin/veloauth-api" target="_blank" rel="noopener noreferrer" class="project-icon-link" data-i18n-title="projects.visit" title="Modrinth">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="project-description" data-i18n="projects.api.desc">API плагин для интеграции с VeloAuth System. Позволяет разработчикам легко интегрировать систему авторизации в свои плагины и расширения.</p>
+                            <div class="project-features">
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span data-i18n="projects.api.feature1">Простая интеграция</span>
+                                </div>
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span data-i18n="projects.api.feature2">Документация</span>
+                                </div>
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span data-i18n="projects.api.feature3">Расширяемый</span>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <span>Minecraft</span>
+                                <span>API</span>
+                                <span data-i18n="projects.tags.integration">Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mods" class="minecraft-section">
+            <div class="minecraft-bg"></div>
+            <div class="section-content">
+                <div class="minecraft-label">
+                    <span class="mc-bracket">[</span>
+                    <span data-i18n="mods.sectionLabel">MINECRAFT МОДЫ</span>
+                    <span class="mc-bracket">]</span>
+                </div>
+                <h2 class="minecraft-section-title">
+                    <span class="mc-text" data-i18n="mods.sectionTitle">Мои Моды</span>
+                </h2>
+                
+                <div class="minecraft-mods-grid">
+                    <div class="mc-mod-card">
+                        <div class="mc-mod-header">
+                            <div class="mc-mod-icon enternal-icon">
+                                <img src="mods-icons/enternal-model.png" alt="Enternal Model" class="mc-icon-img">
+                            </div>
+                            <div class="mc-mod-badge premium">PREMIUM</div>
+                        </div>
+                        <h3 class="mc-mod-title">Enternal Model</h3>
+                        <p class="mc-mod-description" data-i18n="mods.enternalDesc">
+                            Хоррор мод для Minecraft с жуткими моделями и атмосферой. Добавляет пугающие существа и события!
+                        </p>
+                        <div class="mc-mod-features">
+                            <div class="mc-feature">
+                                <svg class="mc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                </svg>
+                                <span data-i18n="mods.feature1">Хоррор модели</span>
+                            </div>
+                            <div class="mc-feature">
+                                <svg class="mc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                                <span data-i18n="mods.feature2">Жуткие существа</span>
+                            </div>
+                            <div class="mc-feature">
+                                <svg class="mc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5"></path>
+                                    <path d="M2 12l10 5 10-5"></path>
+                                </svg>
+                                <span data-i18n="mods.feature3">Атмосфера ужаса</span>
+                            </div>
+                        </div>
+                        <a href="https://enternalmodel.gamer.gd" target="_blank" rel="noopener noreferrer" class="mc-download-btn">
+                            <span data-i18n="mods.downloadBtn">СКАЧАТЬ МОД</span>
+                            <div class="mc-btn-shadow"></div>
+                        </a>
+                    </div>
+                    
+                    <div class="mc-mod-card">
+                        <div class="mc-mod-header">
+                            <div class="mc-mod-icon skinster-icon">
+                                <img src="mods-icons/skinster.png" alt="Skinster" class="mc-icon-img">
+                            </div>
+                            <div class="mc-mod-badge premium">PREMIUM</div>
+                        </div>
+                        <h3 class="mc-mod-title">Skinster</h3>
+                        <p class="mc-mod-description" data-i18n="mods.skinsterDesc">
+                            Мод для установки скинов в оффлайн аккаунтах Minecraft. Играй с любым скином без премиум аккаунта!
+                        </p>
+                        <div class="mc-mod-features">
+                            <div class="mc-feature">
+                                <svg class="mc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span data-i18n="mods.feature4">Оффлайн скины</span>
+                            </div>
+                            <div class="mc-feature">
+                                <svg class="mc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span data-i18n="mods.feature5">Без премиума</span>
+                            </div>
+                            <div class="mc-feature">
+                                <svg class="mc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                    <path d="M2 2l7.586 7.586"></path>
+                                    <circle cx="11" cy="11" r="2"></circle>
+                                </svg>
+                                <span data-i18n="mods.feature6">Легкая установка</span>
+                            </div>
+                        </div>
+                        <a href="https://skinster.gamer.gd" target="_blank" rel="noopener noreferrer" class="mc-download-btn">
+                            <span data-i18n="mods.downloadBtn">СКАЧАТЬ МОД</span>
+                            <div class="mc-btn-shadow"></div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mc-info-box">
+                    <div class="mc-info-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="mc-info-text">
+                        <h4 data-i18n="mods.infoTitle">Эксклюзивный контент</h4>
+                        <p data-i18n="mods.infoText">Моды созданы специально для улучшения игрового опыта</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="personal" class="personal-section">
+            <div class="section-content">
+                <div class="section-label">
+                    <span class="label-number">07.</span> <span data-i18n="personal.label">Личное</span>
+                </div>
+                <h2 class="section-title" data-i18n="personal.title">Мой мир</h2>
+                
+                <div class="personal-grid">
+                    <!-- Time & Weather Widget -->
+                    <div class="widget-card time-weather-card">
+                        <div class="widget-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <h3 data-i18n="personal.timeWeather">Время и Погода</h3>
+                        </div>
+                        <div class="time-display">
+                            <div class="current-time" id="currentTime">00:00:00</div>
+                            <div class="current-date" id="currentDate">Загрузка...</div>
+                        </div>
+                        <div class="weather-display" id="weatherDisplay">
+                            <div class="weather-loading">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="2" x2="12" y2="6"></line>
+                                    <line x1="12" y1="18" x2="12" y2="22"></line>
+                                    <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                                    <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                                    <line x1="2" y1="12" x2="6" y2="12"></line>
+                                    <line x1="18" y1="12" x2="22" y2="12"></line>
+                                    <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                                    <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+                                </svg>
+                                <span data-i18n="personal.loadingWeather">Загрузка погоды...</span>
+                            </div>
+                        </div>
+                        <div class="timezone-info">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                            <span>UTC+7 (Новосибирск)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Music Player Widget -->
+                    <div class="widget-card music-card">
+                        <div class="widget-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18V5l12-2v13"></path>
+                                <circle cx="6" cy="18" r="3"></circle>
+                                <circle cx="18" cy="16" r="3"></circle>
+                            </svg>
+                            <h3 data-i18n="personal.myMusic">Моя Музыка</h3>
+                        </div>
+                        <div class="music-player" id="musicPlayer">
+                            <div class="track-info">
+                                <div class="track-title" id="trackTitle">Выберите трек</div>
+                                <div class="track-artist" id="trackArtist">Исполнитель</div>
+                            </div>
+                            <div class="player-controls">
+                                <button class="control-btn" id="prevBtn" aria-label="Предыдущий трек">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                                        <line x1="5" y1="19" x2="5" y2="5"></line>
+                                    </svg>
+                                </button>
+                                <button class="control-btn play-btn" id="playBtn" aria-label="Воспроизвести">
+                                    <svg class="play-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                    <svg class="pause-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                                        <rect x="6" y="4" width="4" height="16"></rect>
+                                        <rect x="14" y="4" width="4" height="16"></rect>
+                                    </svg>
+                                </button>
+                                <button class="control-btn" id="nextBtn" aria-label="Следующий трек">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                                        <line x1="19" y1="5" x2="19" y2="19"></line>
+                                    </svg>
+                                </button>
+                                <button class="control-btn" id="volumeBtn" aria-label="Громкость">
+                                    <svg class="volume-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="volume-slider" id="volumeSlider" style="display: none;">
+                                <input type="range" min="0" max="100" value="70" id="volumeControl">
+                            </div>
+                            <div class="time-display-music">
+                                <span id="currentTimeMusic">0:00</span>
+                                <span id="durationMusic">0:00</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <div class="playlist" id="playlist">
+                                <!-- Треки будут добавлены через JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Widget - Full Width -->
+                <div class="widget-card stats-card-full">
+                    <div class="widget-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                        <h3 data-i18n="personal.stats">Статистика</h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-value" id="visitCount">0</div>
+                            <div class="stat-label" data-i18n="personal.visits">Посещений</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="stat-value" id="onlineTime">0ч</div>
+                            <div class="stat-label" data-i18n="personal.online">Онлайн</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 18V5l12-2v13"></path>
+                                    <circle cx="6" cy="18" r="3"></circle>
+                                    <circle cx="18" cy="16" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="stat-value" id="tracksPlayed">0</div>
+                            <div class="stat-label" data-i18n="personal.tracksPlayed">Треков прослушано</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="section-content">
+                <div class="section-label">
+                    <span class="label-number">08.</span> <span data-i18n="contact.label">Контакты</span>
+                </div>
+                <h2 class="section-title" data-i18n="contact.title">Давайте работать вместе</h2>
+                <p class="contact-text" data-i18n="contact.text">Открыт для новых проектов и интересных предложений</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Email</h3>
+                        <a href="mailto:systeamreklama@gmail.com">systeamreklama@gmail.com</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                            </svg>
+                        </div>
+                        <h3>Telegram</h3>
+                        <a href="https://t.me/sysgood" target="_blank" rel="noopener noreferrer">@sysgood</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </div>
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/S1sTeam" target="_blank" rel="noopener noreferrer">@S1sTeam</a>
+                    </div>
+                </div>
+
+                <div class="cta-box">
+                    <div class="cta-content">
+                        <h3 data-i18n="contact.cta">Готов к сотрудничеству?</h3>
+                        <p data-i18n="contact.ctaText">Свяжись со мной через любой удобный способ</p>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="https://t.me/sysgood" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                            <span data-i18n="contact.telegram">Написать в Telegram</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/S1sTeam" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                            <span data-i18n="contact.github">GitHub профиль</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <span class="logo-bracket">&lt;</span>
+                © 2026 Руслан "Сусик"
+                <span class="logo-bracket">/&gt;</span>
+            </div>
+            <div class="footer-right">
+                <span id="currentTime"></span> • <span data-i18n="footer.made">Сделано с</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: inline; vertical-align: middle;">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                • <span data-i18n="footer.ide">Разработано в</span> <a href="https://kiro.ai" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600;">Kiro IDE</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Наверх">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
