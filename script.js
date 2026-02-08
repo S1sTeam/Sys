@@ -613,42 +613,6 @@ function initStats() {
 }
 
 // Time Display
-const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-const navLinks = document.getElementById('navLinks');
-
-if (mobileMenuToggle && navLinks) {
-    mobileMenuToggle.addEventListener('click', () => {
-        mobileMenuToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        
-        // Prevent body scroll when menu is open
-        if (navLinks.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    });
-    
-    // Close menu when clicking on a link
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-            mobileMenuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-}
-
-// Time Display
 function updateTime() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
